@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="my">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#303f91">
+<title>Salon14 Foods & Cold Drinks | Menu</title>
+<style>
+:root{--navy:#303f91;--ink:#202334;--muted:#687083;--line:#e8eaf0;--bg:#f5f6fa;--white:#fff;--accent:#e9a23b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Myanmar","Myanmar Text",sans-serif}
+header{background:linear-gradient(135deg,#303f91,#4859b5);color:white;padding:28px 18px 24px;text-align:center}
+.brand{font-size:27px;font-weight:800;letter-spacing:.4px}
+.sub{font-size:12px;letter-spacing:2px;margin-top:5px;opacity:.9}
+.tagline{font-size:13px;margin-top:12px;opacity:.9}
+.wrap{max-width:760px;margin:0 auto;padding:16px 14px 44px}
+.search{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:13px;font-size:16px;background:white;outline:none}
+.chips{display:flex;gap:8px;overflow:auto;padding:13px 0 5px;scrollbar-width:none}
+.chips button{white-space:nowrap;border:1px solid #dfe3ef;background:white;color:#3c4562;border-radius:999px;padding:9px 13px;font-size:13px}
+.chips button.active{background:var(--navy);border-color:var(--navy);color:white}
+.group{margin-top:18px}
+.group h2{font-size:18px;margin:0 0 9px;padding:0 2px}
+.item{background:white;border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin:8px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;box-shadow:0 2px 8px #17224a08}
+.name{font-size:15px;line-height:1.55}
+.price{font-size:15px;font-weight:750;white-space:nowrap;color:var(--navy)}
+.note{text-align:center;color:var(--muted);font-size:12px;margin:22px 0 0}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+footer{text-align:center;color:#778097;font-size:11px;padding:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">SALON14</div>
+  <div class="sub">FOODS &amp; COLD DRINKS</div>
+  <div class="tagline">Menu • Price List</div>
+</header>
+<main class="wrap">
+  <input id="search" class="search" type="search" placeholder="Menu ရှာရန်..." aria-label="Search menu">
+  <nav id="chips" class="chips" aria-label="Menu categories"></nav>
+  <section id="menu"></section>
+  <p class="note">မှာယူလိုပါက ဆိုင်ဝန်ထမ်းထံ ပြောကြားပေးပါ။<br>Prices are shown in Myanmar Kyats (Ks).</p>
+</main>
+<footer>© Salon14 Foods &amp; Cold Drinks</footer>
+<script>
+const items = [{"category": "Breakfast", "name": "ထမင်းဆီဆမ်း", "price": 5000}, {"category": "မာလာစီးရီး", "name": "မာလာရှမ်းကော", "price": 18000}, {"category": "မာလာစီးရီး", "name": "ကိုရီးယားမာလာ", "price": 9500}, {"category": "မာလာစီးရီး", "name": "အပ်မှိုမာလာ", "price": 10000}, {"category": "မာလာစီးရီး", "name": "အာလူးမာလာ", "price": 8500}, {"category": "မာလာစီးရီး", "name": "မာလာကြက်တောင်ပံ", "price": 9500}, {"category": "မာလာစီးရီး", "name": "မာလာဟင်း", "price": 10000}, {"category": "မာလာစီးရီး", "name": "Mao Cai(မောက်ချိုက်)", "price": 20000}, {"category": "မာလာစီးရီး", "name": "ကြက်ခြေထောက်မာလာ", "price": 9500}, {"category": "မာလာစီးရီး", "name": "ပဲပြားမာလာ", "price": 8500}, {"category": "မာလာစီးရီး", "name": "ဝက်နံရိုးမာလာ", "price": 10000}, {"category": "Cold Drinks", "name": "ကော်ဖီပူ", "price": 2500}, {"category": "Cold Drinks", "name": "ကော်ဖီအေး", "price": 4500}, {"category": "Cold Drinks", "name": "ကျွဲစိမ်း", "price": 3000}, {"category": "Cold Drinks", "name": "ရေသန့်", "price": 600}, {"category": "Cold Drinks", "name": "Coca Cola", "price": 3000}, {"category": "Cold Drinks", "name": "M150", "price": 3000}, {"category": "Cold Drinks", "name": "Shark", "price": 3000}, {"category": "Cold Drinks", "name": "Speed", "price": 3000}, {"category": "Cold Drinks", "name": "Sunkit(စပါကလင်)", "price": 3000}, {"category": "Cold Drinks", "name": "Sunkit(စပျစ်)", "price": 3000}, {"category": "Cold Drinks", "name": "Sunkit(လိမ္မော်)", "price": 3000}, {"category": "Cold Drinks", "name": "ဖာလူဒါ", "price": 7000}, {"category": "Cold Drinks", "name": "နို့အေး", "price": 4500}, {"category": "Cold Drinks", "name": "ဒိန်ချဉ်", "price": 4500}, {"category": "Cold Drinks", "name": "ဒိုမီနို", "price": 6000}, {"category": "Fresh Juices", "name": "ဥနီဖျော်ရည်", "price": 5500}, {"category": "Fresh Juices", "name": "ငှက်ပျောသီး", "price": 5000}, {"category": "Fresh Juices", "name": "စတော်ဘယ်ရီသီး", "price": 7000}, {"category": "Fresh Juices", "name": "ဖရဲသီး", "price": 4500}, {"category": "Fresh Juices", "name": "နာနတ်မောက်သီး", "price": 6000}, {"category": "Fresh Juices", "name": "နာနတ်သီး", "price": 5500}, {"category": "Fresh Juices", "name": "ပင်မှည့်", "price": 7000}, {"category": "Fresh Juices", "name": "သံပုရာသီး", "price": 4500}, {"category": "Fresh Juices", "name": "သဘောသီး", "price": 4500}, {"category": "Fresh Juices", "name": "သရက်သီး", "price": 4500}, {"category": "Fresh Juices", "name": "သီးစုံဖျော်ရည်", "price": 6500}, {"category": "Fresh Juices", "name": "ထောပတ်သီး", "price": 7000}, {"category": "Ice Cream", "name": "ic", "price": 3500}, {"category": "Juice,Milkshake,Soda", "name": "ကီဝီ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "စတော်ဘယ်ရီ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "ဆားငံသီး", "price": 4500}, {"category": "Juice,Milkshake,Soda", "name": "ရက်ခ်ဘယ်ရီ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "ပျားသံပုရာ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "ဘလူးဘယ်ရီ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "နာနတ်", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "သခွားမွှေး", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "သံပုရာ", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "သရက်", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "သုံးရောင်ခြယ်Soda", "price": 7000}, {"category": "Juice,Milkshake,Soda", "name": "လိုက်ချီး", "price": 3000}, {"category": "Juice,Milkshake,Soda", "name": "လိမ္မော်", "price": 3000}, {"category": "Noodles", "name": "မာလာချဉ်စပ်ခေါက်ဆွဲပြုတ်", "price": 12500}, {"category": "Noodles", "name": "ကြက်ဥခရမ်းချဉ်သီးခေါက်ဆွဲပြုတ်", "price": 10000}, {"category": "Noodles", "name": "ချဉ်စပ်ခေါက်ဆွဲပြုတ်", "price": 10000}, {"category": "Salads", "name": "ကိုရီးယားseafoodမာလာ", "price": 12500}, {"category": "Salads", "name": "အရွက်စုံသုပ်", "price": 6500}, {"category": "Salads", "name": "အသားတုချဉ်စပ်သုပ်", "price": 6500}, {"category": "Salads", "name": "အာလူးထောင်း", "price": 8000}, {"category": "Salads", "name": "အာလူးပဲပင်ပေါက်သုပ်", "price": 8000}, {"category": "Salads", "name": "ငါးပိထမင်းသုပ်", "price": 6500}, {"category": "Salads", "name": "ငါးဖယ်သုပ်", "price": 8000}, {"category": "Salads", "name": "ငါးဖယ်အစာသွပ်", "price": 8000}, {"category": "Salads", "name": "ရခိုင်ပင်လယ်စာသုပ်", "price": 12500}, {"category": "Salads", "name": "ပဲပြားသုပ်", "price": 6000}, {"category": "Salads", "name": "ပဲပြားအစာသွပ်", "price": 6000}, {"category": "Salads", "name": "ပုန်းရည်ကြီးထမင်းသုပ်", "price": 6500}, {"category": "Salads", "name": "ဆေးဘဲဥသုပ်", "price": 7000}, {"category": "Salads", "name": "ထမင်းသုပ်", "price": 6500}, {"category": "Salads", "name": "ထိုင်းကြက်သားသုပ်", "price": 9000}, {"category": "Salads", "name": "လ္ဘက်ထမင်း", "price": 6500}, {"category": "Salads", "name": "လ္ဘက်သုပ်", "price": 5500}, {"category": "Soup", "name": "ကြက်ခြေထောက်ချဉ်စပ်", "price": 8500}, {"category": "Soup", "name": "ယိုးဒယားဟင်းချို", "price": 8500}, {"category": "Soup", "name": "၁၂မျိုးဟင်းချို", "price": 8500}, {"category": "Soup", "name": "ကြက်သောက်ဆမ်း", "price": 9000}, {"category": "Soup", "name": "ကြံမဆိုင်ဟင်းချို", "price": 8500}, {"category": "Soup", "name": "တုံယမ်း", "price": 8500}, {"category": "ထမင်း", "name": "ငါးပိထမင်းကြော်", "price": 7000}, {"category": "ထမင်း", "name": "မာလာထမင်းကြော်", "price": 8500}, {"category": "ထမင်း", "name": "ပဲငါးပိထမင်းကြော်", "price": 7000}, {"category": "ထမင်း", "name": "ပသျှူးထမင်းကြော်", "price": 7000}, {"category": "ထမင်း", "name": "တုန်းယမ်ထမင်းကြော်", "price": 7000}, {"category": "ထမင်း", "name": "ထမင်းကြော်", "price": 7000}, {"category": "ထမင်း", "name": "ထမင်းပေါင်း", "price": 7500}, {"category": "ထမင်း", "name": "ထမင်းဖြူ", "price": 1000}, {"category": "အထောင်းတလိုင်း", "name": "yamyamခေါက်ဆွဲထောင်း", "price": 6500}, {"category": "အထောင်းတလိုင်း", "name": "ကြက်ခြေထောက်ထောင်း", "price": 8000}, {"category": "အထောင်းတလိုင်း", "name": "အပ်မှိုထောင်း", "price": 9000}, {"category": "အထောင်းတလိုင်း", "name": "ဥနီထောင်း", "price": 8000}, {"category": "အထောင်းတလိုင်း", "name": "ပဲကြာဇံထောင်း", "price": 6500}, {"category": "အထောင်းတလိုင်း", "name": "မုန့်တီထောင်း", "price": 6500}, {"category": "အထောင်းတလိုင်း", "name": "ပြောင်းဖူးထောင်း", "price": 6500}, {"category": "အထောင်းတလိုင်း", "name": "ပုစွန်ထောင်း", "price": 12500}, {"category": "အထောင်းတလိုင်း", "name": "သဘောသီးထောင်း", "price": 6500}, {"category": "အရွက်ကြော်", "name": "ကန်စွန်းရွက်ကြော်", "price": 5000}, {"category": "အရွက်ကြော်", "name": "ဥနီပြောင်းဖူးကြော်", "price": 5000}, {"category": "အရွက်ကြော်", "name": "မုန့်ညင်းဖြူကြော်", "price": 4000}, {"category": "အရွက်ကြော်", "name": "ပန်းပွင့်ကြက်ဥကြော်", "price": 5500}, {"category": "အရွက်ကြော်", "name": "အစိမ်းကြော်", "price": 5000}, {"category": "Dishes", "name": "ကြက်ခြေထောက်အစပ်ကြော်", "price": 9500}, {"category": "Dishes", "name": "ကြက်တောင်ပံအစပ်ကြော်", "price": 9500}, {"category": "Dishes", "name": "ကြက်ဥhalf boil", "price": 1500}, {"category": "Dishes", "name": "ကြက်ဥမွှေကြော်", "price": 4000}, {"category": "Dishes", "name": "ချဉ်စပ်", "price": 8500}, {"category": "Dishes", "name": "ချိုချဉ်ကြော်", "price": 9500}, {"category": "Dishes", "name": "ပဲပြားအစပ်ချက်", "price": 8500}, {"category": "Dishes", "name": "ပင်စိမ်း", "price": 8500}, {"category": "Dishes", "name": "သီးရွက်စုံကြက်ဥမွှေကြော်", "price": 6000}, {"category": "Dishes", "name": "ကုန်းဘောင်ကြော်", "price": 9500}, {"category": "Dishes", "name": "စဉ်းကော", "price": 8500}, {"category": "Dishes", "name": "ဝက်နံရိုး ေကြာ်", "price": 11000}, {"category": "Food Snacks", "name": "ကော်ပြန်ကြော်", "price": 5500}, {"category": "Food Snacks", "name": "ဆန်းဝှစ်", "price": 4500}, {"category": "Food Snacks", "name": "ပေါင်မုန့်ကြက်ဥကြော်", "price": 4500}, {"category": "Food Snacks", "name": "ပေါင်မုန့်မီးကင်", "price": 2500}, {"category": "Food Snacks", "name": "ဘာဂါ", "price": 4500}, {"category": "Food Snacks", "name": "အာလူးချောင်းကြော်", "price": 6000}];
+const categories = ["Breakfast", "မာလာစီးရီး", "Cold Drinks", "Fresh Juices", "Ice Cream", "Juice,Milkshake,Soda", "Noodles", "Salads", "Soup", "ထမင်း", "အထောင်းတလိုင်း", "အရွက်ကြော်", "Dishes", "Food Snacks"];
+let active = "အားလုံး";
+const money = n => "Ks " + Number(n).toLocaleString("en-US");
+const chips = document.getElementById("chips");
+const menu = document.getElementById("menu");
+const search = document.getElementById("search");
+function renderChips(){
+  chips.innerHTML = "";
+  ["အားလုံး", ...categories].forEach(c => {
+    const b=document.createElement("button");
+    b.textContent=c; b.className=c===active?"active":"";
+    b.onclick=()=>{active=c;renderChips();renderMenu();};
+    chips.appendChild(b);
+  });
+}
+function renderMenu(){
+  const q=search.value.trim().toLocaleLowerCase();
+  const filtered=items.filter(x=>(active==="အားလုံး"||x.category===active) && (x.name.toLocaleLowerCase().includes(q)||x.category.toLocaleLowerCase().includes(q)));
+  menu.innerHTML="";
+  if(!filtered.length){menu.innerHTML='<div class="empty">ရှာဖွေတွေ့ရှိမှု မရှိပါ။</div>';return;}
+  const groups=[...new Set(filtered.map(x=>x.category))];
+  groups.forEach(cat=>{
+    const section=document.createElement("section");section.className="group";
+    const h=document.createElement("h2");h.textContent=cat;section.appendChild(h);
+    filtered.filter(x=>x.category===cat).forEach(x=>{
+      const row=document.createElement("div");row.className="item";
+      const n=document.createElement("div");n.className="name";n.textContent=x.name;
+      const p=document.createElement("div");p.className="price";p.textContent=money(x.price);
+      row.append(n,p);section.appendChild(row);
+    });
+    menu.appendChild(section);
+  });
+}
+search.addEventListener("input",renderMenu);
+renderChips();renderMenu();
+</script>
+</body>
+</html>
