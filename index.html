@@ -50,7 +50,7 @@ footer{text-align:center;color:#778097;font-size:11px;padding:18px}
 <footer>© Salon14 Foods &amp; Cold Drinks</footer>
 <script src="./menu-data.js"></script>
 <script>
-const {items, categories} = window.SALON14_MENU;
+const {items, categories, categoryImages = {}} = window.SALON14_MENU;
 let active = "အားလုံး";
 const money = n => "Ks " + Number(n).toLocaleString("en-US");
 const chips = document.getElementById("chips");
@@ -73,6 +73,12 @@ function renderMenu(){
   [...new Set(filtered.map(x=>x.category))].forEach(cat=>{
     const section=document.createElement("section");section.className="group";
     const h=document.createElement("h2");h.textContent=cat;section.appendChild(h);
+    if(categoryImages[cat]){
+      const banner=document.createElement("img");
+      banner.src=categoryImages[cat];banner.alt=cat;
+      banner.style.cssText="width:100%;max-height:190px;object-fit:cover;border-radius:12px;margin:0 0 8px";
+      section.appendChild(banner);
+    }
     filtered.filter(x=>x.category===cat).forEach(x=>{
       const row=document.createElement("div");row.className="item"+(x.available===false?" unavailable":"");
       if(x.image){
