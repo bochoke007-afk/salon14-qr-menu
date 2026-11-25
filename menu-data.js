@@ -28,7 +28,7 @@ window.SALON14_MENU = {
       "name": "မာလာရှမ်းကော",
       "price": 18000,
       "available": true,
-      "image": "./images/mala-shan-kaw.jpg"
+      "image": "./mala-shan-kaw.jpg"
     },
     {
       "category": "မာလာစီးရီး",
@@ -602,7 +602,7 @@ window.SALON14_MENU = {
       "name": "ထမင်းကြော်",
       "price": 7000,
       "available": true,
-      "image": "./images/chinese-fried-rice.jpg"
+      "image": "./chinese-fried-rice.jpg"
     },
     {
       "category": "ထမင်း",
@@ -844,6 +844,6 @@ window.SALON14_MENU = {
     }
   ],
   "categoryImages": {
-    "Fresh Juices": "./images/juice-category.jpg"
+    "Fresh Juices": "./juice-category.jpg"
   }
 };
